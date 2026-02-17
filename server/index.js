@@ -111,6 +111,11 @@ app.post('/api/pdf', async (req, res) => {
   }
 });
 
+// health api to check if the server is running
+app.get('/api/health', (req, res) => {
+	res.json({ status: 'ok' });
+});
+
 app.listen(PORT, () => {
   console.log(`PDF server running on http://localhost:${PORT}`);
 });

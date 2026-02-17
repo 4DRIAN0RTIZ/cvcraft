@@ -9,7 +9,8 @@
     "exportJson": "Exportar JSON",
     "importJson": "Importar JSON",
     "clearData": "Limpiar datos",
-    "clearConfirm": "Esto restaurara los datos por defecto. Continuar?"
+    "clearConfirm": "Esto restaurara los datos por defecto. Continuar?",
+    "serverWaking": "Levantando servidor..."
   },
   "sections": {
     "header": "Encabezado",

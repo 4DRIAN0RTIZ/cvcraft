@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCvStore, extractCvData } from '../store/useCvStore';
-import { downloadPdf } from '../utils/pdf';
+import { downloadPdf, checkServerHealth } from '../utils/pdf';
 import { generateCvHtml } from '../cv-template/generateCvHtml';
 import type { CvData } from '../types/cv';
 
@@ -9,6 +9,20 @@ export default function Toolbar() {
   const { t, i18n } = useTranslation();
   const store = useCvStore();
   const jsonInputRef = useRef<HTMLInputElement>(null);
+  const [serverReady, setServerReady] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const poll = async () => {
+      const ok = await checkServerHealth();
+      if (active) {
+        setServerReady(ok);
+        if (!ok) setTimeout(poll, 10000);
+      }
+    };
+    poll();
+    return () => { active = false; };
+  }, []);
 
   const handleDownloadPdf = async () => {
     const data = extractCvData(store);
@@ -67,7 +81,13 @@ export default function Toolbar() {
         <button type="button" className="toolbar-btn" onClick={toggleLang}>
           {i18n.language === 'es' ? 'EN' : 'ES'}
         </button>
-        <button type="button" className="toolbar-btn primary" onClick={handleDownloadPdf}>
+        <button
+          type="button"
+          className="toolbar-btn primary"
+          onClick={handleDownloadPdf}
+          disabled={!serverReady}
+          title={!serverReady ? t('toolbar.serverWaking') : ''}
+        >
           {t('toolbar.downloadPdf')}
         </button>
         <button type="button" className="toolbar-btn" onClick={handleExportJson}>

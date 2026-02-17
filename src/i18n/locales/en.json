@@ -9,7 +9,8 @@
     "exportJson": "Export JSON",
     "importJson": "Import JSON",
     "clearData": "Clear data",
-    "clearConfirm": "This will restore default data. Continue?"
+    "clearConfirm": "This will restore default data. Continue?",
+    "serverWaking": "Waking up server..."
   },
   "sections": {
     "header": "Header",
