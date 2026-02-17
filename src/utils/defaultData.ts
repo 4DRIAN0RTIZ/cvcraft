@@ -26,15 +26,15 @@ export const DEFAULT_COLOR_SCHEME: ColorScheme = {
 export const defaultData: CvData = {
   fullName: 'Oscar Adrian Ortiz Bustos',
   professionalTitle: 'Ingeniero en Desarrollo y Gestion de Software',
-  photoUrl: 'https://iili.io/fBsuEue.md.png',
+  photoUrl: 'https://developer.cuevaneander.tech/images/profile2.png',
   photoSize: 160,
   sectionTitles: { ...DEFAULT_SECTION_TITLES },
   colorScheme: { ...DEFAULT_COLOR_SCHEME },
   dateFormat: 'raw',
   contactItems: [
-    { id: id(), icon: 'fas fa-envelope', text: 'adrian.ortiz.bustos@hotmail.com' },
+    { id: id(), icon: 'fas fa-envelope', text: 'correo@hotmail.com' },
     { id: id(), icon: 'fas fa-map-marker-alt', text: 'Guadalajara, Jalisco, Mexico' },
-    { id: id(), icon: 'fas fa-phone', text: '+52 3318741342' },
+    { id: id(), icon: 'fas fa-phone', text: '+52 3344332211' },
     { id: id(), icon: 'fab fa-linkedin', text: 'linkedin.com/in/4drian0rtiz' },
   ],
   education: [
