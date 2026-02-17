@@ -62,7 +62,7 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
   }, []);
 
   return (
-    <div ref={wrapperRef} style={{
+    <div ref={wrapperRef} className="cv-preview-wrapper" style={{
       width: '100%',
       height: contentHeight > 0 ? `${Math.ceil(contentHeight * scale)}px` : '100%',
     }}>
