@@ -15,7 +15,8 @@ export default function Toolbar() {
     const html = generateCvHtml(data);
     try {
       await downloadPdf(html, `${data.fullName.replace(/\s+/g, '_')}_cv.pdf`);
-    } catch {
+    } catch (err) {
+      console.error('PDF error:', err);
       alert('Error generating PDF. Make sure the server is running (cd server && pnpm start)');
     }
   };
