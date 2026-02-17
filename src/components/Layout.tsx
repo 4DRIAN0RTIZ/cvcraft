@@ -19,24 +19,6 @@ export default function Layout() {
 
   return (
     <div className="layout">
-      {/* Mobile tab switcher */}
-      <div className="mobile-tabs">
-        <button
-          type="button"
-          className={`mobile-tab ${activeTab === 'edit' ? 'active' : ''}`}
-          onClick={() => setActiveTab('edit')}
-        >
-          {t('tabs.edit')}
-        </button>
-        <button
-          type="button"
-          className={`mobile-tab ${activeTab === 'preview' ? 'active' : ''}`}
-          onClick={() => setActiveTab('preview')}
-        >
-          {t('tabs.preview')}
-        </button>
-      </div>
-
       <div className={`form-panel ${activeTab === 'edit' ? 'mobile-visible' : 'mobile-hidden'}`}>
         <div className="form-scroll">
           <HeaderForm />
@@ -55,6 +37,24 @@ export default function Layout() {
       </div>
       <div className={`preview-panel ${activeTab === 'preview' ? 'mobile-visible' : 'mobile-hidden'}`}>
         <CvPreview />
+      </div>
+
+      {/* Mobile tab bar at bottom */}
+      <div className="mobile-tabs">
+        <button
+          type="button"
+          className={`mobile-tab ${activeTab === 'edit' ? 'active' : ''}`}
+          onClick={() => setActiveTab('edit')}
+        >
+          {t('tabs.edit')}
+        </button>
+        <button
+          type="button"
+          className={`mobile-tab ${activeTab === 'preview' ? 'active' : ''}`}
+          onClick={() => setActiveTab('preview')}
+        >
+          {t('tabs.preview')}
+        </button>
       </div>
     </div>
   );

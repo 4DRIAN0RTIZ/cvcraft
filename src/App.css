@@ -23,6 +23,7 @@ body {
 
 #root {
   height: 100vh;
+  height: 100dvh; /* adjusts for mobile browser chrome */
   display: flex;
   flex-direction: column;
 }
