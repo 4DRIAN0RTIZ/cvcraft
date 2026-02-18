@@ -394,19 +394,17 @@ input[type="file"] {
   }
 
   .mobile-hidden {
-    display: none;
+    flex: 0 0 0px;
+    overflow: hidden;
   }
 
   .mobile-visible {
     flex: 1;
   }
 
-  /* Preview container fills the full panel height via flex, then centers CV */
+  /* Preview container fills the full panel height; wrapper covers it entirely */
   .cv-preview-container {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 0;
   }
 

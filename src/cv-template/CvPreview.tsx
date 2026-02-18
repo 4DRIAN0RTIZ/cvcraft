@@ -15,9 +15,11 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
   const data = useCvStore(selectCvData);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const [wrapperActualHeight, setWrapperActualHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches
   );
@@ -36,7 +38,7 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // Observe outer container for panel dimensions
+  // Observe outer container for panel width (used for scale calculation)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -48,18 +50,24 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
     return () => observer.disconnect();
   }, []);
 
-  // Recompute scale when container size, breakpoint or content changes
+  // Observe wrapper rendered height (flex:1 resolves it correctly even from display:none)
   useEffect(() => {
-    const { width, height } = containerSize;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const observer = new ResizeObserver(entries => {
+      setWrapperActualHeight(entries[0].contentRect.height);
+    });
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
+
+  // Recompute scale when container size or breakpoint changes
+  useEffect(() => {
+    const { width } = containerSize;
     if (!width) return;
-    const scaleX = width / CV_CONTENT_WIDTH;
-    // Mobile: fit CV within panel (both axes); desktop: scale by width only
-    if (isMobile && contentHeight > 0 && height > 0) {
-      setScale(Math.min(scaleX, height / contentHeight));
-    } else {
-      setScale(scaleX);
-    }
-  }, [containerSize, isMobile, contentHeight]);
+    // Always width-based; iframe height handles panel fill on mobile
+    setScale(width / CV_CONTENT_WIDTH);
+  }, [containerSize]);
 
   // Measure iframe body height after load and on DOM mutations
   const handleLoad = useCallback(() => {
@@ -90,10 +98,15 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
   const cvVisualWidth = Math.round(CV_CONTENT_WIDTH * scale);
   const cvVisualHeight = contentHeight > 0 ? Math.ceil(contentHeight * scale) : 0;
 
-  // Mobile: .cv-preview-container CSS class gives flex:1 to fill the panel
+  // Mobile: fill wrapper height (measured after flex layout resolves); Desktop: match CV content
+  const iframeHeight = isMobile && wrapperActualHeight > 0 && scale > 0
+    ? Math.ceil(wrapperActualHeight / scale)
+    : (contentHeight > 0 ? contentHeight : 0);
+
+  // Mobile: flex column so wrapper can use flex:1 to fill panel height via CSS layout
   // Desktop: explicit pixel height so the panel can scroll vertically
   const containerStyle = isMobile
-    ? { width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }
+    ? { width: '100%', display: 'flex', flexDirection: 'column' as const }
     : { width: '100%', height: cvVisualHeight > 0 ? `${cvVisualHeight}px` : '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' };
 
   return (
@@ -102,12 +115,25 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
       className="cv-preview-container"
       style={containerStyle}
     >
-      <div style={{
-        width: `${cvVisualWidth}px`,
-        height: cvVisualHeight > 0 ? `${cvVisualHeight}px` : '100%',
-        flexShrink: 0,
-        overflow: 'hidden', // clip pre-transform iframe layout to prevent ghost scroll area
-      }}>
+      <div
+        ref={wrapperRef}
+        style={isMobile
+          ? {
+              width: scale > 0 ? `${cvVisualWidth}px` : '100%',
+              flex: '1',
+              overflow: 'hidden',
+              // hide until scale and wrapper height are both measured to avoid flash
+              visibility: (scale > 0 && wrapperActualHeight > 0) ? 'visible' : 'hidden',
+            }
+          : {
+              width: `${cvVisualWidth}px`,
+              height: cvVisualHeight > 0 ? `${cvVisualHeight}px` : '100%',
+              flexShrink: 0,
+              overflow: 'hidden',
+              visibility: scale > 0 && contentHeight > 0 ? 'visible' : 'hidden',
+            }
+        }
+      >
         <iframe
           ref={iframeRef}
           srcDoc={html}
@@ -115,7 +141,7 @@ const CvPreview = forwardRef<CvPreviewHandle>((_props, ref) => {
           onLoad={handleLoad}
           style={{
             width: `${CV_CONTENT_WIDTH}px`,
-            height: contentHeight > 0 ? `${contentHeight}px` : '100%',
+            height: iframeHeight > 0 ? `${iframeHeight}px` : '100%',
             border: 'none',
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
