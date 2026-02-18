@@ -401,14 +401,13 @@ input[type="file"] {
     flex: 1;
   }
 
-  /* White panel background: empty space below a short CV blends with the CV itself */
-  .preview-panel {
-    background: white;
-  }
-
-  /* Container scrolls horizontally when CV is wider than phone screen */
+  /* Preview container fills the full panel height via flex, then centers CV */
   .cv-preview-container {
-    overflow-x: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
   }
 
   /* Compact toolbar: single row with only primary actions */
