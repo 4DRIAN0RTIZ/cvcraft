@@ -90,13 +90,13 @@ export default function Toolbar() {
         >
           {t('toolbar.downloadPdf')}
         </button>
-        <button type="button" className="toolbar-btn" onClick={handleExportJson}>
+        <button type="button" className="toolbar-btn toolbar-secondary" onClick={handleExportJson}>
           {t('toolbar.exportJson')}
         </button>
-        <button type="button" className="toolbar-btn" onClick={() => jsonInputRef.current?.click()}>
+        <button type="button" className="toolbar-btn toolbar-secondary" onClick={() => jsonInputRef.current?.click()}>
           {t('toolbar.importJson')}
         </button>
-        <button type="button" className="toolbar-btn danger" onClick={handleClear}>
+        <button type="button" className="toolbar-btn danger toolbar-secondary" onClick={handleClear}>
           {t('toolbar.clearData')}
         </button>
         <input ref={jsonInputRef} type="file" accept=".json" hidden onChange={handleImportJson} />
