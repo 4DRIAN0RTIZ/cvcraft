@@ -2,6 +2,8 @@
 
 CV builder with live preview and PDF export.
 
+**Live demo:** [cvcraft.cuevaneander.tech](https://cvcraft.cuevaneander.tech/)
+
 ## Stack
 
 - **Frontend:** React 19, Vite, Zustand, i18next
