@@ -1,0 +1,112 @@
+{
+  "appTitle": "CVCraft",
+  "tabs": {
+    "edit": "Editar",
+    "preview": "Vista Previa"
+  },
+  "toolbar": {
+    "downloadPdf": "Descargar PDF",
+    "exportJson": "Exportar JSON",
+    "importJson": "Importar JSON",
+    "clearData": "Limpiar datos",
+    "clearConfirm": "Esto restaurara los datos por defecto. Continuar?",
+    "serverWaking": "Levantando servidor..."
+  },
+  "sections": {
+    "header": "Encabezado",
+    "contact": "Contacto",
+    "summary": "Resumen Profesional",
+    "education": "Educacion",
+    "technicalSkills": "Habilidades Tecnicas",
+    "personalSkills": "Habilidades Personales",
+    "interests": "Intereses",
+    "workExperience": "Experiencia Laboral",
+    "projects": "Proyectos Destacados",
+    "certifications": "Certificaciones",
+    "sectionTitles": "Titulos de Seccion",
+    "colors": "Colores"
+  },
+  "fields": {
+    "fullName": "Nombre completo",
+    "professionalTitle": "Titulo profesional",
+    "photoUrl": "URL de la foto",
+    "uploadPhoto": "Subir foto",
+    "photoSize": "Tamano de foto (px)",
+    "icon": "Icono",
+    "text": "Texto",
+    "title": "Titulo",
+    "school": "Escuela",
+    "date": "Fecha",
+    "company": "Empresa",
+    "achievements": "Logros",
+    "details": "Detalles",
+    "category": "Categoria",
+    "certName": "Nombre del certificado",
+    "year": "Ano",
+    "summary": "Resumen",
+    "skill": "Habilidad",
+    "interest": "Interes",
+    "dateFormat": "Formato de fecha",
+    "dateFormatRaw": "Texto libre",
+    "dateFormatShort": "Ene 2024",
+    "dateFormatLong": "Enero 2024",
+    "dateFormatNumeric": "01/2024",
+    "month": "Mes",
+    "startDate": "Fecha inicio",
+    "endDate": "Fecha fin",
+    "currentJob": "Actualidad",
+    "graduationDate": "Fecha de graduacion"
+  },
+  "sectionTitles": {
+    "education": "Educacion",
+    "technicalSkills": "Habilidades Tecnicas",
+    "personalSkills": "Habilidades Personales",
+    "interests": "Intereses",
+    "summary": "Resumen Profesional",
+    "workExperience": "Experiencia Laboral",
+    "projects": "Proyectos Destacados",
+    "certifications": "Certificaciones"
+  },
+  "colors": {
+    "headerBg": "Fondo del encabezado",
+    "headerText": "Texto del encabezado",
+    "sidebarBg": "Fondo de barra lateral",
+    "accentColor": "Color de acento",
+    "textColor": "Color del texto",
+    "borderColor": "Color de bordes",
+    "reset": "Resetear colores"
+  },
+  "months": {
+    "1": "Ene",
+    "2": "Feb",
+    "3": "Mar",
+    "4": "Abr",
+    "5": "May",
+    "6": "Jun",
+    "7": "Jul",
+    "8": "Ago",
+    "9": "Sep",
+    "10": "Oct",
+    "11": "Nov",
+    "12": "Dic"
+  },
+  "monthsLong": {
+    "1": "Enero",
+    "2": "Febrero",
+    "3": "Marzo",
+    "4": "Abril",
+    "5": "Mayo",
+    "6": "Junio",
+    "7": "Julio",
+    "8": "Agosto",
+    "9": "Septiembre",
+    "10": "Octubre",
+    "11": "Noviembre",
+    "12": "Diciembre"
+  },
+  "actions": {
+    "add": "Agregar",
+    "remove": "Eliminar",
+    "removeConfirm": "Eliminar este elemento?"
+  }
+}

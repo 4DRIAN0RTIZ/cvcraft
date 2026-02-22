@@ -1,0 +1,112 @@
+{
+  "appTitle": "CVCraft",
+  "tabs": {
+    "edit": "Edit",
+    "preview": "Preview"
+  },
+  "toolbar": {
+    "downloadPdf": "Download PDF",
+    "exportJson": "Export JSON",
+    "importJson": "Import JSON",
+    "clearData": "Clear data",
+    "clearConfirm": "This will restore default data. Continue?",
+    "serverWaking": "Waking up server..."
+  },
+  "sections": {
+    "header": "Header",
+    "contact": "Contact",
+    "summary": "Professional Summary",
+    "education": "Education",
+    "technicalSkills": "Technical Skills",
+    "personalSkills": "Personal Skills",
+    "interests": "Interests",
+    "workExperience": "Work Experience",
+    "projects": "Featured Projects",
+    "certifications": "Certifications",
+    "sectionTitles": "Section Titles",
+    "colors": "Colors"
+  },
+  "fields": {
+    "fullName": "Full name",
+    "professionalTitle": "Professional title",
+    "photoUrl": "Photo URL",
+    "uploadPhoto": "Upload photo",
+    "photoSize": "Photo size (px)",
+    "icon": "Icon",
+    "text": "Text",
+    "title": "Title",
+    "school": "School",
+    "date": "Date",
+    "company": "Company",
+    "achievements": "Achievements",
+    "details": "Details",
+    "category": "Category",
+    "certName": "Certificate name",
+    "year": "Year",
+    "summary": "Summary",
+    "skill": "Skill",
+    "interest": "Interest",
+    "dateFormat": "Date format",
+    "dateFormatRaw": "Free text",
+    "dateFormatShort": "Jan 2024",
+    "dateFormatLong": "January 2024",
+    "dateFormatNumeric": "01/2024",
+    "month": "Month",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "currentJob": "Present",
+    "graduationDate": "Graduation date"
+  },
+  "sectionTitles": {
+    "education": "Education",
+    "technicalSkills": "Technical Skills",
+    "personalSkills": "Personal Skills",
+    "interests": "Interests",
+    "summary": "Professional Summary",
+    "workExperience": "Work Experience",
+    "projects": "Featured Projects",
+    "certifications": "Certifications"
+  },
+  "colors": {
+    "headerBg": "Header background",
+    "headerText": "Header text",
+    "sidebarBg": "Sidebar background",
+    "accentColor": "Accent color",
+    "textColor": "Text color",
+    "borderColor": "Border color",
+    "reset": "Reset colors"
+  },
+  "months": {
+    "1": "Jan",
+    "2": "Feb",
+    "3": "Mar",
+    "4": "Apr",
+    "5": "May",
+    "6": "Jun",
+    "7": "Jul",
+    "8": "Aug",
+    "9": "Sep",
+    "10": "Oct",
+    "11": "Nov",
+    "12": "Dec"
+  },
+  "monthsLong": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "actions": {
+    "add": "Add",
+    "remove": "Remove",
+    "removeConfirm": "Remove this item?"
+  }
+}
